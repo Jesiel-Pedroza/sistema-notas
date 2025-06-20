@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - JESPEDE Notas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo JESPEDE" class="logo">
+        <h2>Sistema de Notas</h2>
+        <form method="POST">
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">{{ messages[0] }}</div>
+          {% endif %}
+        {% endwith %}
+
+        <p style="margin-top: 15px;">
+            Não tem conta? <a href="/registro">Crie uma aqui</a>
+        </p>
+    </div>
+</body>
+</html>

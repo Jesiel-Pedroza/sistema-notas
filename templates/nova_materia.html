@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Matéria</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <div class="form-header">
+      <h2>📘 Nova Matéria</h2>
+    </div>
+    <form method="POST" class="form-materia">
+      <label>Nome da Matéria</label>
+      <input type="text" name="nome" required>
+
+      <label>Nota Prova</label>
+      <input type="number" name="prova" step="0.01" required>
+
+      <label>Nota PIM</label>
+      <input type="number" name="pim" step="0.01" required>
+
+      <label>Nota AVA</label>
+      <input type="number" name="ava" step="0.01" required>
+
+      <label>Nota Exame (opcional)</label>
+      <input type="number" name="ex" step="0.01">
+
+      <div class="form-buttons">
+        <button type="submit" class="btn">Salvar</button>
+        <a href="/dashboard" class="btn btn-secondary">← Voltar</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

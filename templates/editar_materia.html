@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Matéria</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <h2>Atualizar Nota de Exame</h2>
+    <form method="POST" class="form-materia">
+      <label>Matéria:</label>
+      <input type="text" value="{{ materia['nome'] }}" disabled>
+
+      <label>Nota Prova: {{ materia['prova'] }}</label>
+      <label>Nota PIM: {{ materia['pim'] }}</label>
+      <label>Nota AVA: {{ materia['ava'] }}</label>
+      <label>MD: {{ materia['md'] }}</label>
+
+      <label>Nota Exame:</label>
+      <input type="number" name="ex" step="0.01" value="{{ materia['ex'] or '' }}">
+
+      <div class="form-buttons">
+        <button type="submit" class="btn">Atualizar</button>
+        <a href="/dashboard" class="btn btn-secondary">← Voltar</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

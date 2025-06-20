@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - Sistema de Notas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" class="logo" alt="Logo JESPEDE">
+    <h2>Crie sua conta</h2>
+    <form method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+      <input type="password" name="senha" placeholder="Crie uma senha" required>
+      <button type="submit">Registrar</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+    <p style="margin-top: 10px;">
+      Já tem uma conta? <a href="/">Entrar</a>
+    </p>
+  </div>
+</body>
+</html>
