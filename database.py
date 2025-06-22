@@ -1,11 +1,13 @@
 import sqlite3
 import os
 
-# Caminho absoluto até o arquivo notas.db dentro da pasta /data
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "../data/notas.db")
+# Caminho seguro e absoluto
+DB_PATH = os.path.join(os.getcwd(), "data", "notas.db")
 
 def get_connection():
+    # Garante que o diretório exista no ambiente do Render
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
