@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Caminho seguro e absoluto
-DB_PATH = os.path.join(os.getcwd(), "data", "notas.db")
+DB_PATH = os.environ.get("DB_PATH", os.path.join(BASE_DIR, "../data/notas.db"))
 
 def get_connection():
     # Garante que o diretório exista no ambiente do Render
