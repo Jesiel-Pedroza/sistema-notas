@@ -1,16 +1,11 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, request
 from auth import auth
-from database import init_db
-from flask import request
-from database import get_connection
+from database import init_db, get_connection
 
-
-
+# O objeto app precisa estar visível para o Gunicorn
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 app.secret_key = "sua_chave_secreta"
 app.register_blueprint(auth)
-
-
 
 @app.route("/dashboard")
 def dashboard():
@@ -22,7 +17,6 @@ def dashboard():
     conn.close()
 
     return render_template("dashboard.html", nome=session["nome"], materias=materias)
-
 
 @app.route("/nova_materia", methods=["GET", "POST"])
 def nova_materia():
@@ -39,8 +33,6 @@ def nova_materia():
 
         # Cálculo da MD
         md = round((7 * prova + 2 * pim + ava) / 10, 2)
-
-        # Arredondamento se necessário
         if 6.7 <= md < 7.0:
             md = 7.0
 
@@ -53,13 +45,11 @@ def nova_materia():
         else:
             mf = None
 
-        # Definir status
-        if md >= 7.0 or (mf is not None and mf >= 5.0):
-            status = "Aprovado"
-        elif mf is not None and mf < 5.0:
-            status = "Reprovado"
-        else:
-            status = "Exame"
+        status = (
+            "Aprovado" if md >= 7.0 or (mf is not None and mf >= 5.0)
+            else "Reprovado" if mf is not None and mf < 5.0
+            else "Exame"
+        )
 
         conn = get_connection()
         conn.execute("""
@@ -99,11 +89,7 @@ def editar_materia(id):
             if 4.75 <= mf < 5.0:
                 mf = 5.0
 
-        # Atualiza status
-        if mf >= 5.0:
-            status = "Aprovado"
-        else:
-            status = "Reprovado"
+        status = "Aprovado" if mf >= 5.0 else "Reprovado"
 
         conn.execute("""
             UPDATE materias SET ex = ?, mf = ?, status = ?
@@ -116,6 +102,7 @@ def editar_materia(id):
 
     conn.close()
     return render_template("editar_materia.html", materia=materia)
+
 @app.route("/excluir_materia/<int:id>", methods=["POST"])
 def excluir_materia(id):
     if "usuario_id" not in session:
@@ -131,11 +118,9 @@ def excluir_materia(id):
 
     return redirect(url_for("dashboard"))
 
-
+# 🔥 Este trecho roda apenas localmente
 if __name__ == "__main__":
     import os
     init_db()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
-
