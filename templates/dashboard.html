@@ -2,25 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Painel - Sistema de Notas</title>
+  <title>Painel do Aluno</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="dashboard-page">
-  <div class="dashboard-container">
-    <div class="dashboard-header">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <img src="{{ url_for('static', filename='images/logo.jpg') }}" class="logo" alt="Logo JESPEDE">
-        <a href="/logout" class="btn btn-logout">Sair</a>
-      </div>
-      <h1>Bem-vindo, {{ nome }}!</h1>
-      <p>Visualize e gerencie suas matérias abaixo:</p>
-    </div>
+<body>
+  <div class="container">
+    <header>
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo JESPEDE" class="logo">
+      <a href="{{ url_for('auth.logout') }}" class="btn-sair">Sair</a>
+    </header>
 
-    <div class="dashboard-actions">
-      <a href="/nova_materia" class="btn">+ Nova Matéria</a>
-    </div>
+    <h1>Bem-vindo, {{ nome }}!</h1>
+    <p>Visualize e gerencie suas matérias abaixo:</p>
 
-    <table class="notas-tabela">
+    {% if session.email == "jesiel@jespedsys.com.br" %}
+      <a href="{{ url_for('listar_usuarios') }}" class="btn-admin">👤 Ver Usuários</a>
+    {% endif %}
+
+    <a href="{{ url_for('nova_materia') }}" class="btn-nova">+ Nova Matéria</a>
+
+    <table>
       <thead>
         <tr>
           <th>Matéria</th>
@@ -31,25 +32,24 @@
           <th>EX</th>
           <th>MF</th>
           <th>Status</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
         {% for materia in materias %}
         <tr>
-          <td>{{ materia['nome'] }}</td>
-          <td>{{ materia['prova'] }}</td>
-          <td>{{ materia['pim'] }}</td>
-          <td>{{ materia['ava'] }}</td>
-          <td>{{ materia['md'] or "-" }}</td>
-          <td>{{ materia['ex'] or "-" }}</td>
-          <td>{{ materia['mf'] or "-" }}</td>
-          <td class="{{ materia['status']|lower }}">
-            {{ materia['status'] }}
-            {% if materia['status'] == 'Exame' %}
-              <br><a href="/editar_materia/{{ materia['id'] }}" class="btn btn-mini">Editar</a>
-            {% endif %}
-            <form action="/excluir_materia/{{ materia['id'] }}" method="POST" onsubmit="return confirm('Deseja realmente excluir esta matéria?');">
-              <button type="submit" class="btn btn-mini btn-excluir">Excluir</button>
+          <td>{{ materia.nome }}</td>
+          <td>{{ materia.prova }}</td>
+          <td>{{ materia.pim }}</td>
+          <td>{{ materia.ava }}</td>
+          <td>{{ materia.md }}</td>
+          <td>{{ materia.ex or "-" }}</td>
+          <td>{{ materia.mf or "-" }}</td>
+          <td>{{ materia.status }}</td>
+          <td>
+            <a href="{{ url_for('editar_materia', id=materia.id) }}">✏️</a>
+            <form action="{{ url_for('excluir_materia', id=materia.id) }}" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta matéria?')">🗑️</button>
             </form>
           </td>
         </tr>
