@@ -3,7 +3,7 @@ from auth import auth
 from database import init_db, get_connection
 
 # O objeto app precisa estar visível para o Gunicorn
-app = Flask(__name__, template_folder="../templates", static_folder="../static")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 app.secret_key = "sua_chave_secreta"
 app.register_blueprint(auth)
 
