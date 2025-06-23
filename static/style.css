@@ -256,3 +256,19 @@ table.notas-tabela {
 .btn-admin:hover {
   background-color: #f4a261;
 }
+.tabela-container {
+  overflow-x: auto;
+  background-color: #ffffff08;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.notas-tabela th {
+  color: #fff;
+}
+
+.notas-tabela td {
+  color: #e0f7fa;
+  font-size: 14px;
+}
