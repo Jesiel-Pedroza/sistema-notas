@@ -4,6 +4,7 @@ from werkzeug.security import check_password_hash
 
 auth = Blueprint("auth", __name__)
 
+# Rota de login
 @auth.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -11,15 +12,18 @@ def login():
         senha = request.form["senha"]
         usuario = buscar_usuario_por_email(email)
 
-        # ✅ Agora com verificação segura
+        # Verifica se o usuário existe e a senha está correta
         if usuario and check_password_hash(usuario["senha"], senha):
             session["usuario_id"] = usuario["id"]
             session["nome"] = usuario["nome"]
+            session["email"] = usuario["email"]  # Para identificar admins
+            session["email"] = usuario["email"]  # <-- Adicione essa linha
             return redirect(url_for("dashboard"))
 
         flash("Email ou senha incorretos.")
     return render_template("login.html")
 
+# Rota de registro
 @auth.route("/registro", methods=["GET", "POST"])
 def registro():
     if request.method == "POST":
@@ -27,18 +31,19 @@ def registro():
         email = request.form["email"]
         senha = request.form["senha"]
 
-        # Verifica se já existe
+        # Verifica se o email já está cadastrado
         if buscar_usuario_por_email(email):
             flash("E-mail já está em uso. Tente outro.")
             return render_template("registro.html")
 
-        # Cria o novo usuário (senha com hash será gerada no models.py)
+        # Cria o novo usuário
         criar_usuario(nome, email, senha)
         flash("Usuário criado com sucesso. Faça login.")
         return redirect(url_for("auth.login"))
 
     return render_template("registro.html")
 
+# Rota de logout
 @auth.route("/logout")
 def logout():
     session.clear()

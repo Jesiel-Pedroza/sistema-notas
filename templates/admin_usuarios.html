@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Usuários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🛡️ Painel Administrativo - Usuários Cadastrados</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+        {% for u in usuarios %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.nome }}</td>
+            <td>{{ u.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

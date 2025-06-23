@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, redirect, url_for, request
 from auth import auth
 from database import init_db, get_connection
+from models import listar_todos_usuarios
 
 # O objeto app precisa estar visível para o Gunicorn
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -117,6 +118,28 @@ def excluir_materia(id):
     conn.close()
 
     return redirect(url_for("dashboard"))
+
+@app.route("/admin/usuarios")
+def painel_admin():
+    # ⚠️ Substitua pelo seu e-mail ou ID para proteger
+    if "usuario_id" not in session or session.get("email") != "seuemail@exemplo.com":
+        return redirect(url_for("auth.login"))
+
+    conn = get_connection()
+    usuarios = conn.execute("SELECT id, nome, email FROM usuarios").fetchall()
+    conn.close()
+
+    return render_template("admin_usuarios.html", usuarios=usuarios)
+
+@app.route("/usuarios")
+def listar_usuarios():
+    # Protegido → só admin pode ver (ex: admin@admin.com)
+    if "usuario_id" not in session or session.get("email") != "admin@admin.com":
+        return redirect(url_for("dashboard"))
+
+    usuarios = listar_todos_usuarios()
+    return render_template("usuarios.html", usuarios=usuarios)
+
 
 # 🔥 Este trecho roda apenas localmente
 if __name__ == "__main__":
