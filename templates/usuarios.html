@@ -2,24 +2,80 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Todos os Usuários</title>
+  <title>Usuários Cadastrados</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      background-color: #0d1b2a;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00b4d8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1b263b;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #415a77;
+      color: #ffffff;
+    }
+    tr:nth-child(even) {
+      background-color: #2e3a59;
+    }
+    a.btn-voltar {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #00b4d8;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    a.btn-voltar:hover {
+      background-color: #48cae4;
+    }
+  </style>
 </head>
 <body>
-  <h1>Lista de Usuários Cadastrados</h1>
-  <table border="1">
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>E-mail</th>
-    </tr>
-    {% for user in usuarios %}
-    <tr>
-      <td>{{ user.id }}</td>
-      <td>{{ user.nome }}</td>
-      <td>{{ user.email }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  <p><a href="{{ url_for('dashboard') }}">← Voltar para o painel</a></p>
+  <div class="container">
+    <h1>👥 Usuários Cadastrados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in usuarios %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.nome }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn-voltar">← Voltar para o Painel</a>
+  </div>
 </body>
 </html>
