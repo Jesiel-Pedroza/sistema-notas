@@ -119,11 +119,12 @@ def excluir_materia(id):
 
 @app.route("/usuarios")
 def listar_usuarios():
-    if "usuario_id" not in session or session.get("email") != "admin@admin.com":
+    if "usuario_id" not in session or session.get("email") != "jesiel@jespedsys.com.br":
         return redirect(url_for("dashboard"))
 
     usuarios = listar_todos_usuarios()
     return render_template("usuarios.html", usuarios=usuarios)
+
 
 # 🔥 Roda localmente com inicialização do banco
 if __name__ == "__main__":
