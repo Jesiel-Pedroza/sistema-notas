@@ -16,8 +16,7 @@ def login():
         if usuario and check_password_hash(usuario["senha"], senha):
             session["usuario_id"] = usuario["id"]
             session["nome"] = usuario["nome"]
-            session["email"] = usuario["email"]  # Para identificar admins
-            session["email"] = usuario["email"]  # <-- Adicione essa linha
+            session["email"] = usuario["email"]  # ← necessário para painel admin
             return redirect(url_for("dashboard"))
 
         flash("Email ou senha incorretos.")
@@ -31,12 +30,10 @@ def registro():
         email = request.form["email"]
         senha = request.form["senha"]
 
-        # Verifica se o email já está cadastrado
         if buscar_usuario_por_email(email):
             flash("E-mail já está em uso. Tente outro.")
             return render_template("registro.html")
 
-        # Cria o novo usuário
         criar_usuario(nome, email, senha)
         flash("Usuário criado com sucesso. Faça login.")
         return redirect(url_for("auth.login"))
