@@ -12,25 +12,26 @@
     </div>
     <form method="POST" class="form-materia">
   <label>Nome da Matéria</label>
-  <input type="text" name="nome" maxlength="30" required>
+  <input type="text" name="nome" maxlength="30" class="input-materia" required>
 
   <label>Nota Prova</label>
-  <input type="number" name="prova" step="0.01" max="10" required>
+  <input type="number" name="prova" step="0.01" class="input-curta" maxlength="4" required>
 
   <label>Nota PIM</label>
-  <input type="number" name="pim" step="0.01" max="10" required>
+  <input type="number" name="pim" step="0.01" class="input-curta" maxlength="4" required>
 
   <label>Nota AVA</label>
-  <input type="number" name="ava" step="0.01" max="10" required>
+  <input type="number" name="ava" step="0.01" class="input-curta" maxlength="4" required>
 
   <label>Nota Exame (opcional)</label>
-  <input type="number" name="ex" step="0.01" max="10">
+  <input type="number" name="ex" step="0.01" class="input-curta" maxlength="4">
 
   <div class="form-buttons">
     <button type="submit" class="btn">Salvar</button>
-    <a href="/dashboard" class="btn btn-secondary">← Voltar</a>
+    <a href="/dashboard" class="btn btn-voltar">← Voltar</a>
   </div>
 </form>
+
 
   </div>
 </body>
