@@ -283,3 +283,79 @@ input[type="number"] {
     padding: 10px;
   }
 }
+/* ======= MOBILE FIRST MELHORADO ======= */
+@media (max-width: 768px) {
+
+  /* Layout geral */
+  body.dashboard-page {
+    padding: 20px 10px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header h1,
+  .form-header h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .dashboard-container,
+  .form-materia {
+    padding: 10px;
+  }
+
+  .form-materia input {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .form-materia label {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-buttons .btn,
+  .form-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .btn-admin,
+  .btn-nova {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .tabela-container {
+    overflow-x: auto;
+  }
+
+  .notas-tabela {
+    min-width: 600px;
+    font-size: 13px;
+  }
+
+  .notas-tabela th,
+  .notas-tabela td {
+    padding: 8px;
+  }
+
+  .logo {
+    width: 60px;
+    margin-bottom: 10px;
+  }
+
+  .btn-sair {
+    margin-top: 10px;
+  }
+}
