@@ -247,3 +247,39 @@ td {
     max-width: 90%;
   }
 }
+/* FORMATAÇÃO DOS INPUTS */
+input[type="text"],
+input[type="number"] {
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* BOTÕES RESPONSIVOS */
+.form-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.form-buttons .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* MOBILE: MELHORAR ESPAÇAMENTO E TAMANHO */
+@media (max-width: 480px) {
+  .form-materia input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .dashboard-container {
+    padding: 10px;
+  }
+}
