@@ -11,24 +11,25 @@
       <h2>📘 Nova Matéria</h2>
     </div>
     <form method="POST" class="form-materia">
-      <label>Nome da Matéria</label>
-      <input type="text" name="nome" required>
 
-      <label>Nota Prova</label>
-      <input type="number" name="prova" step="0.01" required>
+      <label for="nome">Nome da Matéria</label>
+      <input type="text" id="nome" name="nome" maxlength="30" class="input-materia" required>
 
-      <label>Nota PIM</label>
-      <input type="number" name="pim" step="0.01" required>
+      <label for="prova">Nota Prova</label>
+      <input type="number" id="prova" name="prova" step="0.01" maxlength="5" class="input-curta" required>
 
-      <label>Nota AVA</label>
-      <input type="number" name="ava" step="0.01" required>
+      <label for="pim">Nota PIM</label>
+      <input type="number" id="pim" name="pim" step="0.01" maxlength="5" class="input-curta" required>
 
-      <label>Nota Exame (opcional)</label>
-      <input type="number" name="ex" step="0.01">
+      <label for="ava">Nota AVA</label>
+      <input type="number" id="ava" name="ava" step="0.01" maxlength="5" class="input-curta" required>
+
+      <label for="ex">Nota Exame (opcional)</label>
+      <input type="number" id="ex" name="ex" step="0.01" maxlength="5" class="input-curta">
 
       <div class="form-buttons">
         <button type="submit" class="btn">Salvar</button>
-        <a href="/dashboard" class="btn btn-secondary">← Voltar</a>
+        <a href="/dashboard" class="btn btn-voltar">← Voltar</a>
       </div>
     </form>
   </div>
