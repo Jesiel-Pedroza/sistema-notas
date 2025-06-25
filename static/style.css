@@ -1,105 +1,72 @@
-/* ======= GERAL ======= */
+/* ========== GERAL ========== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #101d42;
-  color: #e0f7fa;
 }
 
-/* ======= LINKS E BOTÕES ======= */
 a {
   text-decoration: none;
 }
 
-button,
-a.btn,
-.btn {
+button, input {
   font-family: inherit;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.btn {
-  background-color: #1ca8a4;
-  color: white;
-  padding: 10px 18px;
-  border: none;
-}
-
-.btn:hover {
-  background-color: #178a87;
-}
-
-.btn-admin {
-  background-color: #ffb703;
-  color: #000;
-  padding: 10px 20px;
-  margin-right: 10px;
-}
-
-.btn-admin:hover {
-  background-color: #f4a261;
-}
-
-.btn-sair {
-  background-color: #34495e;
-  color: white;
-  padding: 8px 14px;
-  margin-left: auto;
-  text-decoration: none;
-}
-
-.btn-sair:hover {
-  background-color: #2c3e50;
-}
-
-.btn-nova {
-  background-color: #20c997;
-}
-
-/* ======= LOGIN PAGE ======= */
+/* ========== LOGIN PAGE ========== */
 body.login-page {
   background: linear-gradient(135deg, #1e2a78, #1ca8a4);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
 }
 
 .login-container {
-  background: #ffffff;
-  padding: 40px 30px;
+  background: #fff;
+  padding: 30px 25px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 340px;
   text-align: center;
-  width: 90%;
-  max-width: 360px;
 }
 
-.logo {
-  width: 80px;
-  margin-bottom: 15px;
+.login-container .logo {
+  width: 70px;
+  margin-bottom: 10px;
 }
 
 .login-container h2 {
-  margin-bottom: 25px;
   color: #1e2a78;
-}
-
-.login-container input {
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  width: 100%;
+  margin: 15px 0;
 }
 
 .login-container form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.login-container input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-container button {
+  padding: 10px;
+  background-color: #1ca8a4;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #178a87;
 }
 
 .flash {
@@ -108,86 +75,94 @@ body.login-page {
   font-weight: bold;
 }
 
-/* ======= HEADER ======= */
+/* ========== DASHBOARD ========== */
+body.dashboard-page {
+  background: #101d42;
+  color: #e0f7fa;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-}
-
-header .logo {
-  width: 80px;
-}
-
-/* ======= DASHBOARD ======= */
-.dashboard-container {
-  padding: 0 20px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-.dashboard-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
   margin-bottom: 20px;
 }
 
-/* ======= TABELA ======= */
+header .logo {
+  width: 70px;
+}
+
+.btn-sair {
+  background-color: #34495e;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-sair:hover {
+  background-color: #2c3e50;
+}
+
+.btn-admin {
+  background: #ffb703;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.btn-nova {
+  background: #1ca8a4;
+  color: white;
+  padding: 10px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* ========== TABELA ========== */
 .tabela-container {
   overflow-x: auto;
   background-color: #ffffff08;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 20px;
 }
 
-table.notas-tabela {
+table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #ffffff11;
 }
 
-.notas-tabela th, .notas-tabela td {
+th, td {
   padding: 12px;
+  text-align: center;
   border-bottom: 1px solid #2c3e50;
-  text-align: center;
-  color: #e0f7fa;
 }
 
-.notas-tabela th {
+th {
   background-color: #1e2a78;
-  color: white;
+  color: #fff;
 }
 
-/* ======= STATUS CORES ======= */
-.aprovado {
-  color: #2ecc71;
+td {
+  color: #e0f7fa;
+  font-size: 14px;
 }
 
-.exame {
-  color: #f1c40f;
-}
-
-.reprovado {
-  color: #e74c3c;
-}
-
-/* ======= FORMULÁRIO DE MATÉRIA ======= */
-.form-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
+/* ========== FORMULÁRIO DE MATÉRIAS ========== */
 .form-materia {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 15px;
   background-color: #ffffff11;
   padding: 20px;
   border-radius: 12px;
@@ -196,44 +171,79 @@ table.notas-tabela {
 .form-materia label {
   color: #e0f7fa;
   font-weight: 500;
+  width: 100%;
 }
 
 .form-materia input {
   padding: 10px;
-  border: none;
   border-radius: 6px;
-  font-size: 14px;
+  border: none;
   background-color: #f9f9f9;
+  font-size: 14px;
 }
 
-/* ======= RESPONSIVO ======= */
-@media (max-width: 768px) {
+.input-materia {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.input-curta {
+  flex: 1 1 90px;
+  max-width: 90px;
+}
+
+/* ========== BOTÕES ========== */
+.btn {
+  background-color: #1ca8a4;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #178a87;
+}
+
+.btn-voltar {
+  background-color: #555;
+  margin-left: 10px;
+}
+
+.btn-voltar:hover {
+  background-color: #333;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 600px) {
   header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
   }
 
-  .dashboard-actions {
+  .btn-admin, .btn-nova {
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+  }
+
+  .form-materia {
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
   }
 
-  table.notas-tabela th, table.notas-tabela td {
-    font-size: 13px;
+  .input-curta {
+    max-width: 100%;
+  }
+
+  th, td {
+    font-size: 12px;
     padding: 8px;
   }
 
-  .btn {
-    width: 100%;
-  }
-
   .login-container {
-    margin: 0 20px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
+    max-width: 90%;
   }
 }
