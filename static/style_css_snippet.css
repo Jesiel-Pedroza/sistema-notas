@@ -1,0 +1,40 @@
+@media (max-width: 480px) {
+  .form-materia {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .form-materia label {
+    font-size: 15px;
+  }
+
+  .input-materia {
+    max-width: 100%;
+  }
+
+  .input-curta {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-buttons .btn,
+  .form-buttons .btn-voltar {
+    width: 100%;
+  }
+
+  .btn-admin,
+  .btn-nova {
+    width: 100%;
+  }
+
+  .notas-tabela {
+    min-width: 700px;
+    overflow-x: auto;
+  }
+}

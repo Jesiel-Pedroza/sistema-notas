@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Nova Matéria</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body class="dashboard-page">
-  <div class="dashboard-container">
-    <div class="form-header">
-      <h2>📘 Nova Matéria</h2>
-    </div>
-   <form method="POST" class="form-materia">
+<form method="POST" class="form-materia">
   <label>Nome da Matéria</label>
   <input type="text" name="nome" maxlength="30" class="input-materia" required>
 
@@ -31,8 +19,3 @@
     <a href="/dashboard" class="btn btn-voltar">← Voltar</a>
   </div>
 </form>
-
-
-  </div>
-</body>
-</html>
